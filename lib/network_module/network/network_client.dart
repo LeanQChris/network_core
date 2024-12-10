@@ -78,7 +78,7 @@ class NetworkClient extends BaseNetworkClient {
           message: r.message,
           rawObject: r.rawObject,
           object: api.parser != null
-              ? api.parser!.parseObject(r.rawObject) as T
+              ? api.parser!.parseObject(r.rawObject!) as T
               : null);
       return Success(res);
     });
