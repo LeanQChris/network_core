@@ -17,9 +17,12 @@ class PostProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Result<NetworkFailure, NetworkResponseModel>> getPosts() async {
-    var result = await cusclient.request(GetPoss(parser: PostEntityParser()));
-    result.fold((failure) {}, (response) {
+  Future<Result<NetworkFailure, NetworkResponseModel<Post>>> getPosts() async {
+    var result =
+        await cusclient.request<Post>(GetPoss(parser: PostEntityParser()));
+    result.fold((failure) {
+      return Failure(failure);
+    }, (response) {
       List<Post> posts = response.rawObject!["data"]
           .map<Post>((e) => Post.fromJson(e))
           .toList();

@@ -20,6 +20,7 @@ abstract class BaseNetworkClient {
 
 class NetworkClient extends BaseNetworkClient {
   NetworkClient._({required super.config, required super.service});
+  
   factory NetworkClient.fromConfig(NetworkConfiguration config) {
     final service = DIONetworkService(config: config);
     return NetworkClient._(config: config, service: service);
