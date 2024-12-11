@@ -59,7 +59,7 @@ class CustomNetworkService extends NetworkService {
   Future<Result<NetworkFailure, NetworkResponseModel<T>>>
       _parseError<T extends Entity>(e) async {
     try {
-      if (e is DioError) {
+      if (e is DioException) {
         if (e.response?.data != null) {
           final data = e.response?.data as Map<String, dynamic>;
           final error = data["message"] as String?;

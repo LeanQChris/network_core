@@ -28,8 +28,8 @@ class DIONetworkService extends NetworkService {
       return Success(
         NetworkResponseModel(
             api: api,
-            statusCode: response.statusCode ?? 0,
-            message: response.statusMessage ?? "",
+            statusCode: response.statusCode ?? 200,
+            message: response.statusMessage ?? "Success",
             rawObject: response.data),
       );
     } catch (e) {
